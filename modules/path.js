@@ -31,3 +31,4 @@ console.log("parse", path.parse("~/Desktop/Eğitim/Nodejs/modules/path.js"));
 // ext: '.js',
 // name: 'path'
 // }
+// seklinde cikti verecektir.
