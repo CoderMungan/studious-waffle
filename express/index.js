@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 const port = 5432;
-const fs = require("fs");
+
+app.use("/assets", express.static(__dirname + "/assets"));
+
+console.log(__dirname + "assets");
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
