@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 5432;
 
-app.use("/assets", express.static(__dirname + "/assets"));
+app.use("/halil", express.static(__dirname + "/assets"));
 
 console.log(__dirname + "assets");
 
