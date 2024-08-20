@@ -27,7 +27,30 @@ const forPost = (req, res) => {
 };
 
 const forMain = (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.render("index", { title: "Anasayfa" });
 };
 
-module.exports = { paramsQuery, forDelete, forPut, forPost, forMain };
+const forParams = (req, res) => {
+  const arr = ["Fatmanur", "Halil", "Mungan"];
+  const obj = [
+    { id: 1, name: "Halil" },
+    { id: 2, name: "Mungan" },
+  ];
+  const number = 5000;
+
+  res.render("parametr", {
+    title: "Parametre",
+    array: arr,
+    object: obj,
+    num: number,
+  });
+};
+
+module.exports = {
+  paramsQuery,
+  forDelete,
+  forPut,
+  forPost,
+  forMain,
+  forParams,
+};

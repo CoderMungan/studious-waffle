@@ -2,7 +2,8 @@ const router = require("express").Router();
 const controller = require("../controller/controller");
 // TODO: Burada html dosyasini render ettigimizden dolayi dosya yolunda hata alabiliriz. Cunku html dosyamiz __dirname'de bulunmamaktadir.
 
-router.get("/", controller.forMain);
+router.get("/main", controller.forMain);
+router.get("/params", controller.forParams);
 router.post("/", controller.forPost);
 router.put("/", controller.forPut);
 router.delete("/", controller.forDelete);

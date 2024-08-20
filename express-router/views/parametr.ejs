@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <% let name = 'CoderMungan' %>
+    <p><%= name %></p>
+    <h1>Parametre Bu</h1>
+  
+  <!-- Array icin -->
+  <p>Yolladigimiz arrayin length'i: <%= array.length %></p>
+  <p><%= array %></p>
+  <!-- For Dongusu Icin -->
+  <% for(let i=0; i < object.length; i++){ %>
+    
+    <%= object[i].id %> - <%= object[i].name %>,
+
+      <% } %>
+ 
+
+  <% for (let obj of object) { %>
+      <p><%= obj.name %></p>
+      <% } %>
+
+
+  <% object.forEach(obj => { %>
+   <p><%= obj.name%></p> 
+  <% }) %>
+
+  <h1>
+    <% if(num == 1000){ %>
+    Numara = 5000
+    <% }else{ %>
+    Numara =200
+    <% } %>
+  </h1>
+
+  </body>
+</html>
