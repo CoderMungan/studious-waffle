@@ -46,11 +46,13 @@ const forParams = (req, res) => {
   });
 };
 
-module.exports = {
-  paramsQuery,
+const controller = {
+  forMain,
+  forParams,
   forDelete,
   forPut,
   forPost,
-  forMain,
-  forParams,
+  paramsQuery,
 };
+
+export default controller;

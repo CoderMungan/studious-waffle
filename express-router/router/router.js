@@ -1,5 +1,6 @@
-const router = require("express").Router();
-const controller = require("../controller/controller");
+import express from "express";
+import controller from "../controller/controller.js";
+const router = express.Router();
 // TODO: Burada html dosyasini render ettigimizden dolayi dosya yolunda hata alabiliriz. Cunku html dosyamiz __dirname'de bulunmamaktadir.
 
 router.get("/main", controller.forMain);
@@ -23,4 +24,4 @@ router.use((req, res) => {
 
 // Eger router ile uygulama calistirilacaksa bunu use ile kullanmaliyiz!
 
-module.exports = router;
+export default router;
