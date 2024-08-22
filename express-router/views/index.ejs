@@ -4,13 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><%= title %></title>
-    <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
+    <%- include("partials/navbar") %>
+    <br />
+    <br />
+    <button id="mybtn">Click</button>
     <% let name = 'CoderMungan' %>
     <% let surName = "Yo" %>
     <h1>index</h1>
     <p><%= name %></p>
     <p><%= surName %></p>
   </body>
+  <script src="/static/js/test.js"></script>
 </html>
