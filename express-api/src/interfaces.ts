@@ -7,7 +7,7 @@ export interface User {
   companyId: number;
 }
 
-export interface Company {
+export interface CompanyInterface {
   id?: number;
   name: string;
 }

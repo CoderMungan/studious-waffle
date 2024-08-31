@@ -5,6 +5,7 @@ import multer from "multer";
 import mainRouter from "./router/mainRouter";
 import dotenv from "dotenv";
 import sequelize from "./database/db";
+import associate from "./models/relations";
 
 // dotenv calismasi icin
 dotenv.config();
@@ -27,6 +28,7 @@ app.use(mainRouter);
 const startServer = async () => {
   try {
     await sequelize.sync();
+    associate();
     console.log("Database'e baglanildi!");
     app.listen(port, () => {
       console.log(`Server http://localhost:${port}/ calisiyor!`);

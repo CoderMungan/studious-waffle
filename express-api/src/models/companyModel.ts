@@ -1,9 +1,8 @@
 import { Model, DataTypes } from "sequelize";
-import sequlize from "../database/db";
-import UserModel from "./userModel";
-import { Company } from "../interfaces";
+import sequelize from "../database/db";
+import { CompanyInterface } from "../interfaces";
 
-const Company = sequlize.define<Model<Company>>(
+const Company = sequelize.define<Model<CompanyInterface>>(
   "Company",
   {
     name: {
@@ -14,7 +13,5 @@ const Company = sequlize.define<Model<Company>>(
   },
   { tableName: "companies" },
 );
-
-Company.hasMany(UserModel, { foreignKey: "companyId", as: "users" });
 
 export default Company;

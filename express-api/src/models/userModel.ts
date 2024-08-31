@@ -1,6 +1,5 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../database/db";
-import Company from "./companyModel";
 import { User } from "../interfaces";
 
 const UserModel = sequelize.define<Model<User>>("UserModel", {
@@ -21,7 +20,7 @@ const UserModel = sequelize.define<Model<User>>("UserModel", {
   isAdmin: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
-    allowNull: false,
+    allowNull: true,
   },
   companyId: {
     type: DataTypes.INTEGER,
@@ -29,10 +28,9 @@ const UserModel = sequelize.define<Model<User>>("UserModel", {
       model: "companies",
       key: "id",
     },
+    allowNull: true,
     unique: true,
   },
 });
-
-UserModel.belongsTo(Company, { foreignKey: "companyId", as: "company" });
 
 export default UserModel;
