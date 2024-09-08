@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { z } from "zod";
 import userCreateValidator from "../validators/userValidators";
 import { User } from "../interfaces";
 import UserModel from "../models/userModel";
@@ -49,7 +50,9 @@ const userList = async (req: Request, res: Response): Promise<Response> => {
 
 const userCreate = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const { username, email, password, companyId, isAdmin } = req.body;
+    const validatedData = userCreateValidator.parse(req.body);
+
+    const { username, email, password, companyId, isAdmin } = validatedData;
     if (!username || !email || !password) {
       return res.status(400).json({ message: "All fields are required!" });
     }
@@ -65,6 +68,9 @@ const userCreate = async (req: Request, res: Response): Promise<Response> => {
       .status(201)
       .json({ message: "User Successfully Created!", data: plainUser });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({ message: error.errors });
+    }
     return res.status(500).json({ message: error });
   }
 };

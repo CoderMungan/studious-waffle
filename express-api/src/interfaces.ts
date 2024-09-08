@@ -4,7 +4,7 @@ export interface User {
   email: string;
   password: string;
   isAdmin: boolean;
-  companyId: number;
+  companyId: number | null;
 }
 
 export interface CompanyInterface {
