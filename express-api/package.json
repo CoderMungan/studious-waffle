@@ -4,6 +4,7 @@
   "main": "src/app.ts",
   "scripts": {
     "start": "nodemon",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,7 +18,8 @@
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import userCreateValidator from "../validators/userValidators";
 import { User } from "../interfaces";
 import UserModel from "../models/userModel";
 import Company from "../models/companyModel";
