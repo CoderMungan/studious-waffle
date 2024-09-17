@@ -23,6 +23,20 @@ const upload = multer();
 // Swagger JSDoc Entegrasyonu
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
+/*
+
+yada bi swagger.json ile de cekebilirsin cektikten sonra swaggerUI cagirip .setup ile ilgili json file koyabiliriz.
+
+ornegin:
+
+import swaggerConfiguration from "./swagger.json";
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerConfiguration));
+
+seklinde yapabilirsin.
+
+*/
+
 // Swagger UI Entegrasyonu
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
