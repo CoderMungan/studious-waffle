@@ -1,6 +1,7 @@
 // src/router/mainRouter.ts
 import express, { Router } from "express";
 import mainController from "../controller/mainController";
+import firstMiddleWare from "../middleware/firstMiddleware";
 
 const mainRouter: Router = express.Router();
 
@@ -30,7 +31,7 @@ const mainRouter: Router = express.Router();
  *                   companyId:
  *                     type: number
  */
-mainRouter.get("/users-list", mainController.userList);
+mainRouter.get("/users-list", firstMiddleWare, mainController.userList);
 
 /**
  * @swagger
