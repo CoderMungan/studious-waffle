@@ -12,7 +12,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 import swaggerOptions from "./swaggerDef";
 
 //Config dosyasindan cek
-import { port } from "./config/config";
+import { port, baseUri } from "./config/config";
 
 const app: Application = express();
 
@@ -55,8 +55,8 @@ const startServer = async () => {
     associate();
     console.log("Database'e baglanildi!");
     app.listen(port, () => {
-      console.log(`Server http://localhost:${port}/ calisiyor!`);
-      console.log(`Swagger http://localhost:${port}/api-docs calisiyor!`);
+      console.log(`Server ${baseUri} calisiyor!`);
+      console.log(`Swagger ${baseUri}/api-docs calisiyor!`);
     });
   } catch (error) {
     console.error("Database'e baglanilamadi!");

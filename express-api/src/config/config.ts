@@ -16,4 +16,6 @@ const s3 = new aws.S3();
 // Port
 const port: number = Number(process.env.port || 3000);
 
-export { s3, port };
+const baseUri: string = "http://localhost:3000";
+
+export { s3, port, baseUri };
