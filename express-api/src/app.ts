@@ -3,7 +3,7 @@ import { Application } from "express";
 import express from "express";
 import multer from "multer";
 import mainRouter from "./router/mainRouter";
-import dotenv from "dotenv";
+import fileRouter from "./router/fileRouter";
 import sequelize from "./database/db";
 import associate from "./models/relations";
 //Swagger icin
@@ -11,11 +11,10 @@ import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerOptions from "./swaggerDef";
 
-// dotenv calismasi icin
-dotenv.config();
+//Config dosyasindan cek
+import { port } from "./config/config";
 
 const app: Application = express();
-const port = process.env.PORT;
 
 // Multer middleware'i form-data için
 const upload = multer();
@@ -46,6 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Router'ı kullanıma alıyoruz
 app.use("/api/v1/", mainRouter);
+app.use("/api/v1/file/", fileRouter);
 
 // Sunucuyu başlatıyoruz
 
