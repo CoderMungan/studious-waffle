@@ -1,6 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../database/db";
-import { CompanyInterface } from "../interfaces";
+import { CompanyInterface } from "../typing/interfaces";
 
 const Company = sequelize.define<Model<CompanyInterface>>(
   "Company",

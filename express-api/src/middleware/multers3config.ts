@@ -1,14 +1,13 @@
-import aws from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
 import path from "path";
 import { Request } from "express";
-import { s3 } from "../config/config";
+import config from "../config/config";
 
 export const uploadSingleS3 = multer({
   storage: multerS3({
-    s3: s3,
-    bucket: "your-s3-bucket-name",
+    s3: config.s3,
+    bucket: config.bucketName,
     acl: "public-read",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     key: (
@@ -53,8 +52,8 @@ export const uploadSingleS3 = multer({
 
 export const uploadMultipleS3 = multer({
   storage: multerS3({
-    s3: s3,
-    bucket: "your-s3-bucket-name",
+    s3: config.s3,
+    bucket: config.bucketName,
     acl: "public-read",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     key: (

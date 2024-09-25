@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { z } from "zod";
 import userCreateValidator from "../validators/userValidators";
-import { User } from "../interfaces";
+import { User } from "../typing/interfaces";
 import UserModel from "../models/userModel";
 import Company from "../models/companyModel";
 import firstMiddleWare from "../middleware/firstMiddleware";

@@ -1,6 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../database/db";
-import { User } from "../interfaces";
+import { User } from "../typing/interfaces";
 
 const UserModel = sequelize.define<Model<User>>("UserModel", {
   username: {

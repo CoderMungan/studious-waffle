@@ -1,6 +1,6 @@
 import aws from "aws-sdk";
 import dotenv from "dotenv";
-
+import { Config } from "../typing/interfaces";
 dotenv.config();
 
 // AWS S3 yapılandırması
@@ -10,12 +10,21 @@ aws.config.update({
   region: process.env.AWS_REGION, // S3 bucket'ın bölgesi
 });
 
-// S3 nesnesini dışa aktar
-const s3 = new aws.S3();
+const config: Config = {
+  s3: new aws.S3(),
+  express: {
+    baseUri: process.env.BASE_URI || "http://localhost:3000",
+    port: Number(process.env.PORT) || 3000,
+    apiPrefix: process.env.API_PREFIX || "/api/v1/",
+  },
+  cors: {
+    disable: process.env.CORS_DISABLE === "true",
+    origin: process.env.CORS_ORIGIN || "",
+    credentials: process.env.CORS_CREDENTIALS === "true",
+  },
+  bucketName: process.env.AWS_STORAGE_BUCKET_NAME || "",
+  isDev: process.env.NODE_ENV === "dev",
+  isProd: process.env.NODE_ENV === "production",
+};
 
-// Port
-const port: number = Number(process.env.port || 3000);
-
-const baseUri: string = "http://localhost:3000";
-
-export { s3, port, baseUri };
+export default config;

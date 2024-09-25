@@ -12,7 +12,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 import swaggerOptions from "./swaggerDef";
 
 //Config dosyasindan cek
-import { port, baseUri } from "./config/config";
+import config from "./config/config";
 
 const app: Application = express();
 
@@ -44,8 +44,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Router'ı kullanıma alıyoruz
-app.use("/api/v1/", mainRouter);
-app.use("/api/v1/file/", fileRouter);
+app.use(config.express.apiPrefix, mainRouter);
+app.use(config.express.apiPrefix + "file/", fileRouter);
 
 // Sunucuyu başlatıyoruz
 
@@ -54,12 +54,34 @@ const startServer = async () => {
     await sequelize.sync();
     associate();
     console.log("Database'e baglanildi!");
-    app.listen(port, () => {
-      console.log(`Server ${baseUri} calisiyor!`);
-      console.log(`Swagger ${baseUri}/api-docs calisiyor!`);
+
+    const server = app.listen(config.express.port, () => {
+      console.log(`Server ${config.express.baseUri} calisiyor!`);
+      console.log(`Swagger ${config.express.baseUri}/api-docs calisiyor!`);
+    });
+
+    // Graceful shutdown on Ctrl + C (SIGINT)
+    process.on("SIGINT", async () => {
+      console.log("\nSIGINT sinyali alindi, sunucu kapatiliyor...");
+
+      // Close server
+      server.close(() => {
+        console.log("Sunucu kapatildi!");
+      });
+
+      try {
+        // Close the database connection
+        await sequelize.close();
+        console.log("Database baglantisi kapatildi!");
+      } catch (error) {
+        console.error("Database baglantisi kapatilamadi:", error);
+      }
+
+      process.exit(0);
     });
   } catch (error) {
-    console.error("Database'e baglanilamadi!");
+    console.error("Database'e baglanilamadi!", error);
+    process.exit(1); // Exit with failure
   }
 };
 
