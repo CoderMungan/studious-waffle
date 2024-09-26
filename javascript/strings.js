@@ -57,6 +57,12 @@ for (let i = 0; i < arr.length; i++) {
 }
 console.log(arr);
 
+/*
+ Algoritmalardan bazi ornekler
+ 1. Ornek icinde "a" harfi gecen kelimeleri kiwi ye cevir
+ 2. Ornek icinde i harfi gecen kelimeleri e ye cevir eger 2 den fazla ise a ya cevir!
+ */
+
 let arr2 = ["banana", "apple", "cherry"];
 arr2.forEach((x, i) => {
   if (x.includes("a")) {
@@ -64,3 +70,27 @@ arr2.forEach((x, i) => {
   }
 });
 console.log(arr2);
+
+function looktheString(str) {
+  let x = str.split("");
+
+  x.forEach((y, i) => {
+    if (y === "i") {
+      x[i] = "e";
+    }
+  });
+  let count = x.filter((e) => e.includes("e"));
+  if (count.length > 2) {
+    x.forEach((j, i) => {
+      if (j == "e") {
+        x[i] = "a";
+      }
+    });
+  }
+  return x.join("");
+}
+
+console.log(looktheString(longName));
+
+// Melih Ciray icerisindeki i harflerini e ye dondur.
+// Eger ki 2 den fazla e var ise e leri a ya cevir.
