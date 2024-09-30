@@ -75,3 +75,15 @@ console.log("filter", filter);
 // 1. Parametre islem sonrasi biriktirme yapan yerdir.
 let sumReduce = numArr.reduce((acc, el) => acc + el, 0);
 console.log("sumReduce: ", sumReduce);
+
+// Algoritma reduce olayi.
+
+function sumArrayAlgo(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+
+console.log("sonuc", sumArrayAlgo([1, 2, 3, 4]));
