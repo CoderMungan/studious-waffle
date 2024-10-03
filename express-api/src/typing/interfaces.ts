@@ -1,5 +1,7 @@
 import aws from "aws-sdk";
 
+import { SequelizeOptions } from "sequelize-typescript";
+
 export interface User {
   id?: number;
   username: string;
@@ -15,6 +17,11 @@ export interface CompanyInterface {
 }
 
 export interface Config {
+  database: {
+    development: SequelizeOptions;
+    test: SequelizeOptions;
+    production: SequelizeOptions;
+  };
   s3: any;
   express: {
     baseUri: string;

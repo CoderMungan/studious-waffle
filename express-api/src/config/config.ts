@@ -1,6 +1,7 @@
 import aws from "aws-sdk";
 import dotenv from "dotenv";
 import { Config } from "../typing/interfaces";
+import { Dialect } from "sequelize";
 dotenv.config();
 
 // AWS S3 yapılandırması
@@ -11,6 +12,29 @@ aws.config.update({
 });
 
 const config: Config = {
+  database: {
+    development: {
+      username: "root",
+      password: "root",
+      database: "database_development",
+      host: "127.0.0.1",
+      dialect: "sqlite",
+    },
+    test: {
+      username: "root",
+      password: "root",
+      database: "database_test",
+      host: "127.0.0.1",
+      dialect: "mysql",
+    },
+    production: {
+      username: "root",
+      password: "root",
+      database: "database_production",
+      host: "127.0.0.1",
+      dialect: "mysql",
+    },
+  },
   s3: new aws.S3(),
   express: {
     baseUri: process.env.BASE_URI || "http://localhost:3000",
