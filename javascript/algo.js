@@ -12,7 +12,7 @@ function fibonacci(n) {
   return fib;
 }
 
-//Factorial
+// Factorial
 function factorial(n) {
   if (n <= 0) {
     return 1;
@@ -34,3 +34,14 @@ function isAnagram(str1, str2) {
 function positiveNumberSum(arr) {
   return arr.filter((x) => x > 0).reduce((a, b) => a + b, 0);
 }
+
+// isPrime
+function isPrime(n) {
+  if (n <= 1) return false;
+  for (let i = 2; i < Math.sqrt(n); i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+console.log("is Prime ?", isPrime(6));

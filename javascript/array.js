@@ -98,6 +98,24 @@ let allTrueEven = everyTrueArray.every((a) => a % 2 === 0); // True
 console.log("evet:", allEven);
 console.log("evet:", allTrueEven);
 
+// some() en az bir elemanin kosulu saglandiysa true dondurur. Saglanmadigi durumlarda false dondurur.
+// orginal arrayi degistirmez.
+let someArr = [1, 2, 3, 4, 5];
+let someTrueArray = [2, 4, 6];
+let allSome = someArr.some((a) => a % 2 === 0); // True
+let allFalseEven = someTrueArray.some((a) => a % 8 === 0); // True
+
+console.log("Ne Dondu:", allSome);
+console.log("Ne Dondu:", allFalseEven);
+
+// reverse() arrayin icindeki elemanlari tersine cevirir. Orjinal arrayi degistirir.
+let notReversetArr = [1, 2, 3, 4];
+console.log("reverse : ", notReversetArr.reverse());
+
+// flat() Derinligi belirlenmis bir seviyede arrayi duzestirir.
+let flatArr = [1, [2, 3], [4, [5]]];
+console.log("flat :", flatArr.flat(2));
+
 // Algoritma reduce olayi.
 function sumArrayAlgo(arr) {
   let sum = 0;
