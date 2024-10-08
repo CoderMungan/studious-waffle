@@ -35,3 +35,45 @@ Person.prototype.saySurname = function () {
 };
 
 fatmaNur.saySurname();
+
+// ES6 ile gelen siniflar ile
+// ES6 ile once class yazilir sonrasinda { } ile icine girilir. bir constructor olusturulur. sonrasinda this ile nesleler tanimlanir.
+// Ardimdan fonksiyonlari olusturabilirsin.
+
+class NewPerson {
+  constructor(name, surname, age) {
+    this.name = name;
+    this.surname = surname;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name} ${this.surname}.`);
+  }
+
+  sayAge() {
+    console.log(`I am ${this.age} years old!`);
+  }
+}
+
+const halilMoongun = new NewPerson("Halil", "Mungan", 31);
+halilMoongun.sayAge(); // I am 31 years old!
+halilMoongun.greet(); // My name is Halil Mungan.
+
+// Inherutance (Kalitim)
+
+class Employee extends NewPerson {
+  constructor(name, surname, age, jobTitle) {
+    super(name, surname, age);
+    this.jobTitle = jobTitle;
+  }
+  descriptionEmployee() {
+    console.log(
+      `Employee name: ${this.name} ${this.surname}, he is a ${this.jobTitle}`,
+    );
+  }
+}
+
+const employee = new Employee("Halil", "Mungan", 31, "Software Developer");
+employee.descriptionEmployee();
+employee.greet();
