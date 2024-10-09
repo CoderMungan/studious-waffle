@@ -60,7 +60,7 @@ const halilMoongun = new NewPerson("Halil", "Mungan", 31);
 halilMoongun.sayAge(); // I am 31 years old!
 halilMoongun.greet(); // My name is Halil Mungan.
 
-// Inherutance (Kalitim)
+// Inheritance (Kalitim)
 
 class Employee extends NewPerson {
   constructor(name, surname, age, jobTitle) {
@@ -77,3 +77,43 @@ class Employee extends NewPerson {
 const employee = new Employee("Halil", "Mungan", 31, "Software Developer");
 employee.descriptionEmployee();
 employee.greet();
+
+// Encapsulation (Kapsulleme)
+
+class Car {
+  #name;
+  #model;
+
+  constructor(name, model) {
+    this.#name = name;
+    this.#model = model;
+  }
+
+  greet() {
+    console.log(`This is ${this.#name}, ${this.#model} car!`);
+  }
+
+  getModel() {
+    console.log(`This car ${this.#model}`);
+  }
+}
+
+const mercedes = new Car("Mercedes", 2023);
+mercedes.greet();
+mercedes.getModel();
+
+// Abstract (Soyutlama)
+
+class CoffeMachine {
+  start() {
+    this.boilerWater();
+    this.brew();
+    console.log(`Coffe is ready.`);
+  }
+  boilerWater() {
+    throw new Error("This is error");
+  }
+  brew() {
+    throw new Error("This is error");
+  }
+}
