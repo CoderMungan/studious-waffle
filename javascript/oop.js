@@ -105,15 +105,87 @@ mercedes.getModel();
 // Abstract (Soyutlama)
 
 class CoffeMachine {
+  constructor() {
+    if (new.target === CoffeMachine) {
+      throw new Error("Abstract class 'CoffeMachine' cannot be instantiated");
+    }
+  }
+
   start() {
     this.boilerWater();
     this.brew();
     console.log(`Coffe is ready.`);
   }
+
   boilerWater() {
     throw new Error("This is error");
   }
+
   brew() {
     throw new Error("This is error");
   }
 }
+
+class Coffe extends CoffeMachine {
+  boilerWater() {
+    console.log("Boiling water");
+  }
+
+  brew() {
+    console.log("Steeping coffe");
+  }
+}
+
+// burasi calisir
+const coffe = new Coffe();
+coffe.start();
+// Boiling water
+// Steeping coffe
+// Coffe is ready.
+
+// burasi calismaz cunku orneklenemez bu class bir abstract gibi davraniyor!
+// const machine = new CoffeMachine();
+// machine.start();
+// Error: Abstract class 'CoffeMachine' cannot be instantiated
+
+// Polymorphism (Polimorfizm cok bicimlilik)
+class Shape {
+  constructor(name) {
+    this.name = name;
+  }
+
+  calculateArea() {
+    throw new Error("Method 'calculateArea()' must be implemented");
+  }
+}
+
+class Circle extends Shape {
+  constructor(name, radius) {
+    super(name);
+    this.radius = radius;
+  }
+  calculateArea() {
+    return Math.PI * Math.pow(this.radius, 2);
+  }
+}
+
+class Square extends Shape {
+  constructor(name, sideLenght) {
+    super(name);
+    this.sideLenght = sideLenght;
+  }
+
+  calculateArea() {
+    return this.sideLenght ** 2;
+  }
+}
+
+function printArea(shape) {
+  console.log(`This area of the ${shape.name} is: ${shape.calculateArea()}`);
+}
+
+const myCircle = new Circle("circle", 5);
+const mySquare = new Square("square", 4);
+
+printArea(myCircle);
+printArea(mySquare);
